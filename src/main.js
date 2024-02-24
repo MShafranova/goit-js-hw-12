@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const data = await fetchImages(userInput, page, imgPerPage);
       handleResponse(data);
-     } catch (error) {
+    } catch (error) {
       console.error('Error fetching data:', error);
       showErrorToast(
         'An error occurred while fetching data. Please try again.'
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hideLoader(loader);
     }
   });
-
 });
 function handleResponse(data) {
   if (data.hits.length === 0) {
@@ -70,15 +69,15 @@ function handleResponse(data) {
     form.reset();
     const totalShownImg = (page - 1) * imgPerPage + data.hits.length;
     const lightbox = new SimpleLightbox('.gallery a', options);
-    
+
     lightbox.refresh();
     if (totalShownImg < data.totalHits) {
-        loadMoreBtn.classList.remove('hidden');
-        endMessage.classList.add('hidden');
-      } else {
-        loadMoreBtn.classList.add('hidden');
-        endMessage.classList.remove('hidden');
-      }
+      loadMoreBtn.classList.remove('hidden');
+      endMessage.classList.add('hidden');
+    } else {
+      loadMoreBtn.classList.add('hidden');
+      endMessage.classList.remove('hidden');
+    }
   }
 }
 
@@ -100,14 +99,13 @@ async function loadMoreImg() {
   endMessage.classList.add('hidden');
 }
 
-
 function smoothScroll() {
-    const galleryItemHeight = document
-      .querySelector('.gallery-item')
-      .getBoundingClientRect().height;
+  const galleryItemHeight = document
+    .querySelector('.gallery-item')
+    .getBoundingClientRect().height;
 
-    window.scrollBy({
-      top: galleryItemHeight * 2,
-      behavior: 'smooth',
-    });
-  }
+  window.scrollBy({
+    top: galleryItemHeight * 2,
+    behavior: 'smooth',
+  });
+}

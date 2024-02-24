@@ -8,7 +8,7 @@ export function showErrorToast(message) {
     title: '',
     backgroundColor: '#ec5d5d',
     message,
-    position: 'topRight'
+    position: 'topRight',
   });
 }
 
